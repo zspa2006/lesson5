@@ -38,10 +38,4 @@ npm run lint
 - 增删改查和分页可用，数据存于当前浏览器 localStorage。密码仅演示表单校验，不会保存，也没有登录功能。
 - 默认进入 /#/user，题目页为 /#/question。
 
-布局和技术配置参考用户提供的两个同学项目，页面独立实现：
-https://github.com/Fang-Xinyu/Lab05-QuizAdmin
-https://github.com/And7891111/test-project
-
-两份参考的依赖及主要界面基本一致；本项目补齐了实际的数据操作。
-
-课件要求还包括 GitHub 提交和 Vercel 部署，按你的最新要求本次仅交付本地文件，未上传源码、未部署。钉钉群的提交要求视频未提供，额外细则仍需核对。
+。
