@@ -1,0 +1,10 @@
+.quiz-header {
+  font-size: 40px;
+  line-height: 60px;
+  background-color: rgb(238, 241, 246);
+  color: #333;
+}
+.quiz-aside { background-color: rgb(238, 241, 246); }
+.quiz-aside .el-menu-item { min-width: 0; }
+.storage-alert { margin-bottom: 20px; }
+.el-dialog { max-width: calc(100vw - 24px); }
