@@ -44,7 +44,7 @@
 </template>
 <script>
 import manager from '../../manager'
-import { initialQuestions, letters, nextId, validateQuestion } from '../../data.mjs'
+import { initialQuestions, letters, nextId, validateQuestion, prepareQuestion } from '../../data.mjs'
 export default {
   mixins: [manager('questions', initialQuestions, 'question')],
   data: () => ({ letters, form: { question: '', options: ['', '', '', ''], answer: '' } }),
@@ -52,15 +52,14 @@ export default {
     open(row) {
       this.editingId = row ? row.id : null
       this.form = row ? JSON.parse(JSON.stringify(row)) : { question: '', options: ['', '', '', ''], answer: '' }
+      if (row) this.form.answer = row.options[letters.indexOf(row.answer)]
       this.formError = ''; this.dialogVisible = true
     },
     save() {
-      const answerText = this.form.answer.trim()
-      const optionIndex = this.form.options.findIndex(option => option.trim() === answerText)
-      this.form.answer = optionIndex >= 0 ? letters[optionIndex] : answerText.toUpperCase()
-      this.formError = validateQuestion(this.form)
+      const question = prepareQuestion(this.form)
+      this.formError = validateQuestion(question)
       if (this.formError) return
-      this.finishSave({ id: this.editingId || nextId(this.rows), question: this.form.question.trim(), options: this.form.options.map(option => option.trim()), answer: this.form.answer })
+      this.finishSave({ ...question, id: this.editingId || nextId(this.rows) })
     }
   }
 }
